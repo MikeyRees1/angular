@@ -1,0 +1,9 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.container{
+    padding: 10px;
+}
+
+input{
+    padding: 10px;
+}

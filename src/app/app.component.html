@@ -1,0 +1,51 @@
+<div class="container align-items-center">
+  <div class="pull-left">
+    <button class="btn btn-primary" (click)="getStationData()">Get station values</button>
+    <!-- <button class="btn btn-primary" (click)="getStationList()">Get station List</button> -->
+  </div>
+  <div class = "pull-right">
+    <label for="myInput">Insert station reference</label>
+    <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="idName">
+
+    <h1 *ngIf="value">{{ stnName}}: {{ value }}{{ displayedMeasure }}</h1>
+
+  </div>
+  <hr>
+
+<button class="btn btn-success" (click)="toDict()">Display All Stations</button>
+<div>
+  <h4>Click a station to receive live tide data</h4>
+  <p>Tide data is presented in m(metres) and mAOD(metres above ordnance datum)</p>
+</div>
+<div class='row wow fadeInUp col-md-12' *ngFor='let index of stnArray;; let i = index; let even = even'>
+  <span *ngIf="even">
+     <div class='col-md-6 pull-left'  *ngIf="stnArray[i+1]">
+      <div class="card-deck"
+      style="cursor: pointer"
+      (click)="updateStationRef(i+1)"
+      >
+           <div class="card-block">
+                  <h4 class="card-title">
+                    {{stnArray[i+1].Station}}</h4>
+
+                    <p class="card-text"> ({{stnArray[i+1].StnRef }}) mAOD </p>
+                </div>
+     </div>
+     </div>
+     <div class='col-md-6 pull-right'  *ngIf="stnArray[i+2]">
+      <div class="card-deck"
+      style="cursor: pointer"
+      (click)="updateStationRef(i+2)">
+           <div class="card-block">
+                  <h4 class="card-title">
+                    {{stnArray[i+2].Station}}</h4>
+
+            <p class="card-text"> ({{stnArray[i+2].StnRef }}) m</p>
+        </div>
+     </div>
+     </div>
+   </span>
+</div>
